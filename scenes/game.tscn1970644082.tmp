@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dxlby88u3tamt"]
+
+[ext_resource type="PackedScene" uid="uid://ghrykjhr03mq" path="res://scenes/player_map.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://0awpsjr8phvp" path="res://scripts/game.gd" id="1_yqjtg"]
+
+[node name="Game" type="Node2D" unique_id=1078342713]
+script = ExtResource("1_yqjtg")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1172349432]
+position = Vector2(592, -356)
+
+[node name="player_map" parent="." unique_id=2097749088 instance=ExtResource("1_uwrxv")]
+position = Vector2(-1016, -1690)

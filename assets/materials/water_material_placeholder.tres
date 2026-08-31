@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://3xvofe387i2a"]
+
+[ext_resource type="Texture2D" uid="uid://flylpc2y0340" path="res://assets/textures/water.jpg" id="1_r14ia"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_r14ia")
+disable_receive_shadows = true

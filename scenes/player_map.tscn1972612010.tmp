@@ -1,0 +1,47 @@
+[gd_scene format=4 uid="uid://ghrykjhr03mq"]
+
+[ext_resource type="Texture2D" uid="uid://4rqjbklda8kd" path="res://assets/Tiles_project.png" id="1_eri0g"]
+[ext_resource type="Script" uid="uid://cek6x51v5rfex" path="res://scripts/tile_map_layer.gd" id="2_s0mp4"]
+
+[sub_resource type="GDScript" id="GDScript_l26dh"]
+script/source = "extends TileMapLayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dmjfj"]
+texture = ExtResource("1_eri0g")
+margins = Vector2i(20, 16)
+separation = Vector2i(4, 4)
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_vkrul"]
+sources/1 = SubResource("TileSetAtlasSource_dmjfj")
+
+[node name="player_map" type="Node2D" unique_id=2097749088]
+
+[node name="Control" type="Control" parent="." unique_id=775594293]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_l26dh")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Control" unique_id=1129848380]
+tile_map_data = PackedByteArray("AABdAE8AAQAAAAAAAABdAFIAAQAAAAAAAABdAFUAAQAAAAAAAABdAFgAAQAAAAAAAABdAFsAAQAAAAAAAABdAEwAAQAAAAAAAABgAEwAAQAAAAAAAABgAE8AAQAAAAAAAABgAFIAAQAAAAAAAABgAFUAAQAAAAAAAABgAFgAAQAAAAAAAABgAFsAAQAAAAAAAABjAEwAAQAAAAAAAABjAE8AAQAAAAAAAABjAFIAAQAAAAAAAABjAFUAAQAAAAAAAABmAFUAAQAAAAAAAABpAFUAAQAAAAAAAABsAFUAAQAAAAAAAABsAFIAAQAAAAAAAABpAFIAAQAAAAAAAABmAFIAAQAAAAAAAABmAE8AAQAAAAAAAABpAE8AAQAAAAAAAABsAE8AAQAAAAAAAABsAEwAAQAAAAAAAABpAEwAAQAAAAAAAABmAEwAAQAAAAAAAABjAFgAAQAAAAAAAABmAFgAAQAAAAAAAABpAFgAAQAAAAAAAABsAFgAAQAAAAAAAABjAFsAAQAAAAAAAABmAFsAAQAAAAAAAABpAFsAAQAAAAAAAABsAFsAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_vkrul")
+rendering_quadrant_size = 64
+script = ExtResource("2_s0mp4")
