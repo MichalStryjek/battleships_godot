@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dxlby88u3tamt"]
 
-[ext_resource type="Script" uid="uid://bni1xchw4pb0p" path="res://scripts/node_3d.gd" id="1_lnu2h"]
+[ext_resource type="Script" uid="uid://v3ielqwsn4fb" path="res://scripts/Game.gd" id="1_lnu2h"]
 [ext_resource type="MeshLibrary" uid="uid://b60snqqsrefn" path="res://assets/map_mesh.tres" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://bkml26ghgsafv" path="res://scripts/player_map_3d.gd" id="3_lnu2h"]
 
 [node name="Game" type="Node" unique_id=1301129256]
 
@@ -10,10 +11,11 @@ script = ExtResource("1_lnu2h")
 
 [node name="Player_Map" type="GridMap" parent="Node3D" unique_id=787909490]
 mesh_library = ExtResource("2_yqjtg")
+script = ExtResource("3_lnu2h")
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Node3D/Player_Map" unique_id=107279644]
-transform = Transform3D(2.0278632e-09, 0.98543483, -0.17005333, -1.1751192e-08, 0.17005333, 0.98543483, 1, 2.3053605e-15, 1.1924881e-08, -1.4920936, 10.32209, -5)
+transform = Transform3D(7.401418e-09, 0.9854349, -0.17005315, -1.1751179e-08, 0.17005315, 0.9854349, 1, -5.295291e-09, 1.28386555e-08, -0.005663395, 10.32209, -5)
 fov = 107.00347
 
 [node name="Target_Map" type="GridMap" parent="Node3D" unique_id=2105513625]
