@@ -3,19 +3,22 @@ extends Node3D
 
 var dimx = 10
 var dimy = 10
+var game_mode = "PVE"
 
 @onready var shooting_map : GridMap = $Player_Map
 @onready var camera_shoot : Camera3D = $Player_Map/Camera3D
 
 var generator = map_generator.new()
-var interaction = map_interaction.new()
-
+var enemy = opponent.new()
+var secred_board
 
 func _ready() -> void:
 	generator.generate_map_3d(shooting_map,dimx,dimy)
 	camera_shoot.position = generator.position_camera(camera_shoot, shooting_map,1)
 	camera_shoot.rotation_degrees=Vector3(-80,-90,0)
-	pass
+	
+	if game_mode == "PVE":
+		secred_board=enemy.generate_game_array()
 	
 
 func _unhandled_input(event):
@@ -30,8 +33,6 @@ func _unhandled_input(event):
 			else:
 				print("nie działa")
 				#For debuging
-				
-				
 
 func get_gridmap_cell(mouse_pos: Vector2) -> Vector3i:
 	#For debugging the returned results are broader
@@ -56,16 +57,19 @@ func get_gridmap_cell(mouse_pos: Vector2) -> Vector3i:
 	)
 	# Convert world position to GridMap coordinates
 
-
 func interact_with_cell(cell: Vector3i):
 	var item_id = shooting_map.get_cell_item(cell)
-
+	compare_cell(cell,secred_board)
 	if item_id == GridMap.INVALID_CELL_ITEM:
 		print ("WHOPSIE NIE DZIAŁA PANOCZKU")
 		return
 
 	print("Interacted with cell: ", cell)
-	print("Tile/item ID: ", item_id)
 
+func compare_cell(cell,grid):
+	var i = cell[0]
+	var j = cell[2]
+	var result=grid[i][j]
+	shooting_map.set_cell_item(cell,result,0)
 
 	

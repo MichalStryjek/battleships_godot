@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://cndlxq6bsn3hs"]
 
-[ext_resource type="Texture2D" uid="uid://ddql23uslgjyq" path="res://assets/textures/istockphoto-2150827093-2048x2048.jpg" id="1_p0cnx"]
+[ext_resource type="Texture2D" uid="uid://n2xctbfip50t" path="res://assets/textures/vecteezy_wood-texture_164514.jpg" id="1_p0cnx"]
 
 [resource]
 shading_mode = 0

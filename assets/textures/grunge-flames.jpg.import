@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4rqjbklda8kd"
-path="res://.godot/imported/Tiles_project.png-a7f6fce3c2dec9541bd3f93df4777fe3.ctex"
+uid="uid://dc8n3l5tfkikj"
+path="res://.godot/imported/grunge-flames.jpg-f6c5e66b077d7c115d0be9b199426695.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tiles_project.png"
-dest_files=["res://.godot/imported/Tiles_project.png-a7f6fce3c2dec9541bd3f93df4777fe3.ctex"]
+source_file="res://assets/textures/grunge-flames.jpg"
+dest_files=["res://.godot/imported/grunge-flames.jpg-f6c5e66b077d7c115d0be9b199426695.ctex"]
 
 [params]
 

@@ -31,7 +31,7 @@ func position_camera(_cam: Camera3D,map : GridMap, shooting_map : bool):
 	map_max_y = map_max[0]
 	
 	camera_pos_x = map_max_x
-	camera_pos_y = map_max_y
+	camera_pos_y = map_max_y-1
 	camera_pos_z = (map_max_x+map_max_y)*0.60
 	
 	return Vector3(camera_pos_y,camera_pos_z,camera_pos_x)

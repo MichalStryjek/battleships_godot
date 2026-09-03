@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcuydiseu8e4f"
-path="res://.godot/imported/Tiles_map.bmp-d0ca66897e4354228e55641e6345540b.ctex"
+uid="uid://dibtlehnifr7x"
+path="res://.godot/imported/circle-water-splash-illustration-vector.bmp-73a79908bb6ba347eea25f52eaf505b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tiles_map.bmp"
-dest_files=["res://.godot/imported/Tiles_map.bmp-d0ca66897e4354228e55641e6345540b.ctex"]
+source_file="res://assets/work_folder/images/circle-water-splash-illustration-vector.bmp"
+dest_files=["res://.godot/imported/circle-water-splash-illustration-vector.bmp-73a79908bb6ba347eea25f52eaf505b1.ctex"]
 
 [params]
 
