@@ -2,6 +2,10 @@ extends Node3D
 
 @onready var camera : Camera3D = $Camera3D
 var tween: Tween
+
+func get_camera() -> Camera3D:
+	return camera
+
 func pan_camera_to(target_rotation: Vector3, target_position: Vector3, duration: float = 0.3):
 	
 	if tween:

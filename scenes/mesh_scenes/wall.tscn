@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://1kixetiivwmo"]
 
-[ext_resource type="Texture2D" uid="uid://b27rkouulsk30" path="res://assets/textures/GVSogwcfjpgs536_generated.jpg" id="1_wykyb"]
+[ext_resource type="Texture2D" uid="uid://b27rkouulsk30" path="res://assets/textures/GVSogwcfjpgs536_generated.jpg" id="1_coua3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bedht"]
 shading_mode = 0
-albedo_texture = ExtResource("1_wykyb")
+albedo_texture = ExtResource("1_coua3")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_rmurt"]
 _surfaces = [{
