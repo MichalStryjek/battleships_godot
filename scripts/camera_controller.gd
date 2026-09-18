@@ -11,8 +11,12 @@ var camera_position_b : Vector3
 var position_shift: Vector3 = Vector3(1,8.5,0) 
 var camera_rotation_b : Vector3 = camera_rotation_a+ Vector3(80,0,0)
 var camera_at_a : bool = true
+var generator
+var map_focus_selection : int = 0
 
-func setup():
+
+func setup(s_generator):
+	generator = s_generator
 	return
 
 var log = logger_tool.new()
@@ -32,7 +36,6 @@ func pan_camera_to(target_rotation: Vector3, target_position: Vector3, duration:
 	
 	if tween_up:
 		tween_up.kill()
-	
 	tween_up = create_tween()
 	tween_up.set_parallel(true)
 	tween_up.set_trans(Tween.TRANS_SINE)	
@@ -101,27 +104,96 @@ func find_camera_position(map : GridMap, _cam : Camera3D=camera):
 	return calculated_position
 
 #move maps around when there is more than one
-func move_maps(map,old_position, new_position, direction, duration):
+#positions available for boards are in a variable "arrangements"
+#which position in the array a board should take is dependant on
+#number of players and which map is currently viewed
+#it is independant on camera movement up and down
+#and it shift gridmaps around instead
+func move_maps(maps, direction, map_no: int, duration : float = 0.3):
 	
+	# this is a variable containing positions created automatically
+	# during map creation in map generator
+	var positions = generator.board_arrangements
+	
+	# this will hold a value for this position
+	var new_position
+	
+	# this is the highest number of map the player can see
+	var upper_bound :int = ((positions.size()+1)/2)-1
+	
+	# index of where currently moved board would be in the positions array
+	# it is not there, board current position is assigned using different array
+	# positions in those two arrays has to be matched
+	# initial array does not contain additional positions that reflect moving
+	# a board into positions lower that 0 in the original array
+	# that is why the original array had to be extended
+	var board_current_position_in_array : int
+	
+	# this is the index in the directions array where board will be moved
+	var board_new_position_in_array : int
+	
+	#we don't move arrays if the player looks down
 	if camera_at_a == true:
-		pass
+		return
 	
 	
 	if tween_map:
 		tween_map.kill()
-	if direction == "left":
-		direction = 1
+	
+	# if we look at the leftmost board we don't shift the boards to the right anymore
+	# as there is nothing on the left anymore
+	if direction == "right":
+		if map_focus_selection==0:
+			return
+		else:
+			# this modifies in which direction we will change array indexes
+			direction = 1
+		
 	else:
-		direction = -1
+		# if we look at the rightmost board we don't shift the boards left anymore
+		# as there is nothing at the right
+		# this is why upper bound was defined
+		if map_focus_selection==upper_bound:
+			print("upper_bound reached", upper_bound)
+			return
+		else:
+			# this modifies in which direction we will change array indexes
+			direction = -1
+		
 	tween_map = create_tween()
-	#tween.set_parallel(true)
+	tween_map.set_parallel(true)
 	tween_map.set_trans(Tween.TRANS_SINE)	
 	tween_map.set_ease(Tween.EASE_OUT)
 	
-	tween_map.tween_property(
-		map,
-		"position",
-		old_position+(new_position*direction),
-		duration
-	)
-	
+	for i in range(map_no):
+		#NOTICE
+		# which index in the expanded array the current map position should be
+		# it depends of number of players called map_no meaning number of oponent maps
+		# there is two times as many board positions as opponent players minus one as the middle one overlaps
+		# index i switches which map is currently moved
+		# map focus tells which map player currently looks at
+		# for 1 opponent this will always be 0
+		# for 2 opponents when looking at the map with index 1 we will get 0 for map 0 and 1 for map no. 1
+		# indexes start at zero indexes start at zero indexes start at zero
+		board_current_position_in_array = map_no-1+i-map_focus_selection
+		#print("map ", i, " is now in position ", board_current_position_in_array)
+		
+		#NOTICE
+		#new position in the direction array will be modified by direction
+		# it will go one more or one less depending on whether left or right was selected
+		board_new_position_in_array= board_current_position_in_array+direction
+		#print("map ", i, " becomes ", board_new_position_in_array)
+		
+		#NOTICE
+		#value of vector containing new position taken from positions array
+		new_position=positions[board_new_position_in_array]
+		#print(new_position)
+		tween_map.tween_property(
+			maps[i],
+			"position",
+			new_position,
+			duration
+		)
+		#NOTICE
+		#switch value that tells which map the player is looking at
+	map_focus_selection=map_focus_selection-direction

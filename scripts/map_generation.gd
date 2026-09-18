@@ -8,6 +8,9 @@ var targets
 var dimx
 var dimy
 
+var board_positions : Array[Vector3] =[]
+var board_arrangements : Array[Vector3] = [] #This contains also slots for arrays to move into whe changing view
+
 func setup(setup_targets, s_dimx,s_dimy):
 	targets=setup_targets
 	dimx = s_dimx
@@ -30,7 +33,6 @@ func generate_map_3d(grid: GridMap,x,y):
 #for main script to hold
 func create_target_boards(opponents_no,target_maps):
 	#Array that decides positions of the boards
-	var board_positions : Array[Vector3] = []
 	
 	for i in range(opponents_no):
 		#Read and initiate scene containing opponent board
@@ -50,6 +52,27 @@ func create_target_boards(opponents_no,target_maps):
 		
 		generate_map_3d(board,dimx,dimy)
 		#Append to the array of target maps for future reference
+		
 		target_maps.append(board)
 		
+	#It has to work on duplicate because in Godot the array changes even
+	#Though it is a parameter of a function
+	board_arrangements=board_positions.duplicate()
+	mirror_board_positions(board_arrangements)
 	return
+#This function creates an array that contains board positions 
+#as well as their reflections in horizontal axis
+func mirror_board_positions(pos: Array[Vector3]):
+	#print("START ",pos)
+	var pos_backup = pos.duplicate()
+	pos.reverse()
+	#print("REVERSED ",pos)
+	pos.resize(pos.size()-1)
+	#print("RESIZED ",pos)
+	for i in pos.size():
+		#print(pos[i])
+		pos[i] = pos[i]*Vector3(1,1,-1)
+	#print("MULTIPLIED ",pos)
+	pos.append_array(pos_backup)
+	#print("APPENDED ",pos)
+	return pos

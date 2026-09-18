@@ -6,7 +6,7 @@ var dimx = 10
 var dimy = 10
 var game_mode = "PVE"
 var player_turn=true
-var number_of_opponents : int = 1
+var number_of_opponents : int = 2
 
 ################################
 #Mandatory script options
@@ -50,6 +50,7 @@ func _ready() -> void:
 	generator.setup(targets,dimx,dimy)
 	generator.create_target_boards(number_of_opponents,target_maps)
 	generator.generate_map_3d(shooting_map,dimx,dimy)
+	camera_controller.setup(generator)
 	camera_controller.position_camera(shooting_map)
 	interaction_controller.setup(camera_controller,target_maps)
 	game_controller.setup(game_mode,enemy,target_maps)	
@@ -71,5 +72,11 @@ func _input(event):
 		
 	
 	if event.is_action_pressed("switch_map_left"):
-		camera_controller.move_maps()
+		if number_of_opponents!=1:
+			camera_controller.move_maps(target_maps, "left", number_of_opponents)
+		
+	if event.is_action_pressed("switch_map_right"):
+		
+		if number_of_opponents!=1:
+			camera_controller.move_maps(target_maps, "right", number_of_opponents)
 		
