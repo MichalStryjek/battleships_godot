@@ -1,42 +1,75 @@
 extends Node3D
 
 @onready var camera : Camera3D = $Camera3D
-var tween: Tween
+var tween_up: Tween
+var tween_map: Tween
+
+#Camera position variables ALL OF THOSE WILL BE MOVED TO SETUP FUNCTION
+var camera_rotation_a : Vector3 = Vector3(-80,-90,0)
+var camera_position_a : Vector3
+var camera_position_b : Vector3
+var position_shift: Vector3 = Vector3(1,8.5,0) 
+var camera_rotation_b : Vector3 = camera_rotation_a+ Vector3(80,0,0)
+var camera_at_a : bool = true
+
+func setup():
+	return
+
+var log = logger_tool.new()
 
 func get_camera() -> Camera3D:
 	return camera
 
+func switch_pan():
+	if camera_at_a:
+		pan_camera_to(camera_rotation_b,camera_position_b)
+	else:
+		pan_camera_to(camera_rotation_a,camera_position_a)
+	camera_at_a=!camera_at_a
+
+
 func pan_camera_to(target_rotation: Vector3, target_position: Vector3, duration: float = 0.3):
 	
-	if tween:
-		tween.kill()
+	if tween_up:
+		tween_up.kill()
 	
-	tween = create_tween()
-	tween.set_parallel(true)
-	tween.set_trans(Tween.TRANS_SINE)	
-	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property(
+	tween_up = create_tween()
+	tween_up.set_parallel(true)
+	tween_up.set_trans(Tween.TRANS_SINE)	
+	tween_up.set_ease(Tween.EASE_OUT)
+	tween_up.tween_property(
 		camera,
 		"rotation_degrees",
 		target_rotation,
 		duration
 	)
 	
-	tween.tween_property(
+	tween_up.tween_property(
 		camera,
 		"position",
 		target_position,
 		duration
 	)
-#immediately move camera here
-func camera_position(position_start: Vector3):
-	camera.position=position_start
 
-func camera_rotation(position_start: Vector3):
-	camera.rotation_degrees=position_start
+
+func position_camera(map : GridMap):
+	
+	camera_position_a=find_camera_position(map)
+	camera_position_b=camera_position_a+position_shift
+	
+	camera.position=camera_position_a
+	camera.rotation_degrees=camera_rotation_a
+	
+	return
 
 #automatically find starting position of camera depending on map size
-func position_camera(map : GridMap, _cam : Camera3D=camera, shooting_map : int=0):
+func find_camera_position(map : GridMap, _cam : Camera3D=camera):
+	
+	var calculated_position : Vector3
+	
+	#######
+	log.log_source="CAM_CONT"
+	######
 # target_map is to be used for camera position in case of multiple maps
 	var map_min : Vector3i
 	var map_max : Vector3i
@@ -61,4 +94,34 @@ func position_camera(map : GridMap, _cam : Camera3D=camera, shooting_map : int=0
 	camera_pos_y = map_max_y-1
 	camera_pos_z = (map_max_x+map_max_y)*0.60
 	
-	return Vector3(camera_pos_y,camera_pos_z,camera_pos_x)
+	calculated_position=Vector3(camera_pos_y,camera_pos_z,camera_pos_x)
+	
+	log.log30(calculated_position, "Calculated position for camera")
+	
+	return calculated_position
+
+#move maps around when there is more than one
+func move_maps(map,old_position, new_position, direction, duration):
+	
+	if camera_at_a == true:
+		pass
+	
+	
+	if tween_map:
+		tween_map.kill()
+	if direction == "left":
+		direction = 1
+	else:
+		direction = -1
+	tween_map = create_tween()
+	#tween.set_parallel(true)
+	tween_map.set_trans(Tween.TRANS_SINE)	
+	tween_map.set_ease(Tween.EASE_OUT)
+	
+	tween_map.tween_property(
+		map,
+		"position",
+		old_position+(new_position*direction),
+		duration
+	)
+	
