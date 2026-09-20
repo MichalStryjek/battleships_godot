@@ -13,13 +13,14 @@ var camera_rotation_b : Vector3 = camera_rotation_a+ Vector3(80,0,0)
 var camera_at_a : bool = true
 var generator
 var map_focus_selection : int = 0
+var number_of_players
 
-
-func setup(s_generator):
+func setup(s_generator, s_number_of_players):
 	generator = s_generator
+	number_of_players = s_number_of_players
 	return
 
-var log = logger_tool.new()
+var log1 = logger_tool.new()
 
 func get_camera() -> Camera3D:
 	return camera
@@ -71,7 +72,7 @@ func find_camera_position(map : GridMap, _cam : Camera3D=camera):
 	var calculated_position : Vector3
 	
 	#######
-	log.log_source="CAM_CONT"
+	log1.log_source="CAM_CONT"
 	######
 # target_map is to be used for camera position in case of multiple maps
 	var map_min : Vector3i
@@ -99,7 +100,7 @@ func find_camera_position(map : GridMap, _cam : Camera3D=camera):
 	
 	calculated_position=Vector3(camera_pos_y,camera_pos_z,camera_pos_x)
 	
-	log.log30(calculated_position, "Calculated position for camera")
+	log1.log30(calculated_position, "Calculated position for camera")
 	
 	return calculated_position
 
@@ -109,8 +110,11 @@ func find_camera_position(map : GridMap, _cam : Camera3D=camera):
 #number of players and which map is currently viewed
 #it is independant on camera movement up and down
 #and it shift gridmaps around instead
-func move_maps(maps, direction, map_no: int, duration : float = 0.3):
+func move_maps(maps, direction, duration : float = 0.3):
 	
+	#This value is just a number of players. There might be some issues in 
+	#the future so it is a separate variable in this function just in case
+	var map_no=number_of_players
 	# this is a variable containing positions created automatically
 	# during map creation in map generator
 	var positions = generator.board_arrangements

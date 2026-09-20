@@ -81,3 +81,7 @@ func interact_with_grid(grid_result):
 	logg.log20(get_grid_coordinates(grid_result), "Detected coordinates")	
 	
 	return
+
+func handle_hover(cursor_position):
+	print("you moved")
+	return
