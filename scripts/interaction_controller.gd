@@ -94,7 +94,7 @@ func handle_hover(cursor_position):
 	
 	if object is GridMap:
 		var cell = get_grid_coordinates(result)
-		logg.log20("Hover over gridmap")
+		#logg.log20("Hover over gridmap")
 		highlighter_controller.highlight_gridmap(object, cell)
 		
 	return
