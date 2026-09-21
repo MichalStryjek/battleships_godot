@@ -1,9 +1,7 @@
 [gd_resource type="MeshLibrary" format=4 uid="uid://ddvvd75rievrv"]
 
-[ext_resource type="Material" uid="uid://cndlxq6bsn3hs" path="res://assets/materials/wood_material_placeholder.tres" id="1_bl7rs"]
-[ext_resource type="Material" uid="uid://3xvofe387i2a" path="res://assets/materials/water_material_placeholder.tres" id="2_lup43"]
-[ext_resource type="Texture2D" uid="uid://chqqnculdi3a2" path="res://assets/work_folder/images/circle-water-splash-illustration-vector.webp" id="3_lup43"]
-[ext_resource type="Texture2D" uid="uid://bckhc0k7naio0" path="res://assets/work_folder/images/grunge-flames.webp" id="3_rrld8"]
+[ext_resource type="Material" uid="uid://cndlxq6bsn3hs" path="res://assets/materials/wood_material_placeholder.tres" id="1_05j8h"]
+[ext_resource type="Material" uid="uid://3xvofe387i2a" path="res://assets/materials/water_material_placeholder.tres" id="2_obd5y"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_tsavu"]
 _surfaces = [{
@@ -66,7 +64,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
-"material": ExtResource("1_bl7rs"),
+"material": ExtResource("1_05j8h"),
 "name": "Cube",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -78,7 +76,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
-"material": ExtResource("1_bl7rs"),
+"material": ExtResource("1_05j8h"),
 "name": "Cube.001",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -90,7 +88,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
-"material": ExtResource("1_bl7rs"),
+"material": ExtResource("1_05j8h"),
 "name": "Cube.002",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -102,7 +100,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
-"material": ExtResource("1_bl7rs"),
+"material": ExtResource("1_05j8h"),
 "name": "Cube.003",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -114,7 +112,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AAABAAIAAgABAAMA"),
-"material": ExtResource("2_lup43"),
+"material": ExtResource("2_obd5y"),
 "name": "Plane",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -139,9 +137,12 @@ image = SubResource("Image_lup43")
 [sub_resource type="BoxShape3D" id="BoxShape3D_ou6e5"]
 size = Vector3(2, 0.1, 2)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wod6v"]
+load_path = "res://.godot/imported/circle-water-splash-illustration-vector.webp-a017db44b0908ce342015725576bfcc1.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqwcg"]
 shading_mode = 0
-albedo_texture = ExtResource("3_lup43")
+albedo_texture = SubResource("CompressedTexture2D_wod6v")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6ludf"]
 _surfaces = [{
@@ -150,7 +151,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
-"material": ExtResource("1_bl7rs"),
+"material": ExtResource("1_05j8h"),
 "name": "Cube",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -162,7 +163,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
-"material": ExtResource("1_bl7rs"),
+"material": ExtResource("1_05j8h"),
 "name": "Cube.001",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -174,7 +175,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
-"material": ExtResource("1_bl7rs"),
+"material": ExtResource("1_05j8h"),
 "name": "Cube.002",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -186,7 +187,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
-"material": ExtResource("1_bl7rs"),
+"material": ExtResource("1_05j8h"),
 "name": "Cube.003",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -220,9 +221,12 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_golqh"]
 image = SubResource("Image_rrld8")
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ggift"]
+load_path = "res://.godot/imported/grunge-flames.webp-038c41dd56b5d7c79e125943a908265c.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvgsr"]
 shading_mode = 0
-albedo_texture = ExtResource("3_rrld8")
+albedo_texture = SubResource("CompressedTexture2D_ggift")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3bwdo"]
 _surfaces = [{
@@ -231,7 +235,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
-"material": ExtResource("1_bl7rs"),
+"material": ExtResource("1_05j8h"),
 "name": "Cube",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -243,7 +247,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
-"material": ExtResource("1_bl7rs"),
+"material": ExtResource("1_05j8h"),
 "name": "Cube.001",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -255,7 +259,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
-"material": ExtResource("1_bl7rs"),
+"material": ExtResource("1_05j8h"),
 "name": "Cube.002",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -267,7 +271,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
-"material": ExtResource("1_bl7rs"),
+"material": ExtResource("1_05j8h"),
 "name": "Cube.003",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

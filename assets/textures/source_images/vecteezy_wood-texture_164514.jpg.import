@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b27rkouulsk30"
-path.s3tc="res://.godot/imported/GVSogwcfjpgs536_generated.jpg-d73c0444c86bb2d7bd25f9123d884d08.s3tc.ctex"
+uid="uid://n2xctbfip50t"
+path.s3tc="res://.godot/imported/vecteezy_wood-texture_164514.jpg-a1c18791e17705ed599d4e5074a16eec.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/GVSogwcfjpgs536_generated.jpg"
-dest_files=["res://.godot/imported/GVSogwcfjpgs536_generated.jpg-d73c0444c86bb2d7bd25f9123d884d08.s3tc.ctex"]
+source_file="res://assets/textures/source_images/vecteezy_wood-texture_164514.jpg"
+dest_files=["res://.godot/imported/vecteezy_wood-texture_164514.jpg-a1c18791e17705ed599d4e5074a16eec.s3tc.ctex"]
 
 [params]
 

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://1kixetiivwmo"]
 
-[ext_resource type="Texture2D" uid="uid://b27rkouulsk30" path="res://assets/textures/GVSogwcfjpgs536_generated.jpg" id="1_coua3"]
+[ext_resource type="Texture2D" uid="uid://b27rkouulsk30" path="res://assets/textures/source_images/GVSogwcfjpgs536_generated.jpg" id="1_coua3"]
+
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bedht"]
 shading_mode = 0

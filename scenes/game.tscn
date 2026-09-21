@@ -1,14 +1,22 @@
 [gd_scene format=3 uid="uid://dxlby88u3tamt"]
 
 [ext_resource type="Script" uid="uid://c08iyqbcx4sxc" path="res://scripts/Game.gd" id="1_p57ef"]
-[ext_resource type="Script" uid="uid://cfqlfl1nu2417" path="res://scenes/input_manager.gd" id="2_0tnpc"]
+[ext_resource type="Script" uid="uid://cfqlfl1nu2417" path="res://scripts/input_manager.gd" id="2_0tnpc"]
 [ext_resource type="Script" uid="uid://c5ryrq0li58xh" path="res://scripts/game_controller.gd" id="2_gee14"]
-[ext_resource type="MeshLibrary" uid="uid://ddvvd75rievrv" path="res://assets/grid_tiles_placeholder.tres" id="2_lnu2h"]
-[ext_resource type="MeshLibrary" uid="uid://b7f15w1li1n1q" path="res://assets/materials/wall.tres" id="3_iywne"]
-[ext_resource type="MeshLibrary" uid="uid://oqf4u5q35oy5" path="res://assets/desk.tres" id="4_lbhrr"]
+[ext_resource type="MeshLibrary" uid="uid://ddvvd75rievrv" path="res://assets/mesh_libraries/grid_tiles_placeholder.tres" id="2_lnu2h"]
+[ext_resource type="MeshLibrary" uid="uid://b7f15w1li1n1q" path="res://assets/mesh_libraries/wall.tres" id="3_iywne"]
+[ext_resource type="Script" uid="uid://phrhkspdfv12" path="res://scripts/highlighter_control.gd" id="3_vtaks"]
+[ext_resource type="MeshLibrary" uid="uid://oqf4u5q35oy5" path="res://assets/mesh_libraries/desk.tres" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://cn68fogokwg64" path="res://scripts/setup_controller.gd" id="5_0tnpc"]
 [ext_resource type="Script" uid="uid://cmgklwxco0wkg" path="res://scripts/camera_controller.gd" id="6_p57ef"]
 [ext_resource type="Script" uid="uid://b3a63axv3ei05" path="res://scripts/interaction_controller.gd" id="6_u5sy4"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vtaks"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkcsb"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.78431374, 0.7764706, 0, 0.5803922)
 
 [node name="Game" type="Node" unique_id=1301129256]
 script = ExtResource("1_p57ef")
@@ -17,6 +25,11 @@ script = ExtResource("1_p57ef")
 script = ExtResource("2_0tnpc")
 
 [node name="Controllers" type="Node" parent="." unique_id=822748397]
+
+[node name="PlayerFeedbackController" type="Node" parent="Controllers" unique_id=930039078]
+
+[node name="HighlighterControl" type="Node3D" parent="Controllers/PlayerFeedbackController" unique_id=1877972960]
+script = ExtResource("3_vtaks")
 
 [node name="GameController" type="Node" parent="Controllers" unique_id=340299629]
 script = ExtResource("2_gee14")
@@ -55,6 +68,12 @@ mesh_library = ExtResource("2_lnu2h")
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Targets" type="Node3D" parent="World" unique_id=439364263]
+
+[node name="Highlights" type="Node" parent="World" unique_id=1997194393]
+
+[node name="GridCellHighlight" type="MeshInstance3D" parent="World/Highlights" unique_id=453668363]
+mesh = SubResource("PlaneMesh_vtaks")
+surface_material_override/0 = SubResource("StandardMaterial3D_gkcsb")
 
 [node name="UI" type="Control" parent="." unique_id=1662731694]
 layout_mode = 3

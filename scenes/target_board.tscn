@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://sksotujoh4kb"]
 
-[ext_resource type="MeshLibrary" uid="uid://ddvvd75rievrv" path="res://assets/grid_tiles_placeholder.tres" id="1_wfjgh"]
+[ext_resource type="MeshLibrary" uid="uid://ddvvd75rievrv" path="res://assets/mesh_libraries/grid_tiles_placeholder.tres" id="1_wfjgh"]
+
 
 [node name="Target_Map" type="GridMap" unique_id=1201821335]
 mesh_library = ExtResource("1_wfjgh")

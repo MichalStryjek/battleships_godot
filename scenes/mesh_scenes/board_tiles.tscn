@@ -2,8 +2,6 @@
 
 [ext_resource type="Material" uid="uid://cndlxq6bsn3hs" path="res://assets/materials/wood_material_placeholder.tres" id="1_ns6u7"]
 [ext_resource type="Material" uid="uid://3xvofe387i2a" path="res://assets/materials/water_material_placeholder.tres" id="2_5t4e2"]
-[ext_resource type="Texture2D" uid="uid://bckhc0k7naio0" path="res://assets/work_folder/images/grunge-flames.webp" id="3_5t4e2"]
-[ext_resource type="Texture2D" uid="uid://chqqnculdi3a2" path="res://assets/work_folder/images/circle-water-splash-illustration-vector.webp" id="3_xvgsr"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_tsavu"]
 _surfaces = [{
@@ -129,7 +127,6 @@ size = Vector3(2, 0.1, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqwcg"]
 shading_mode = 0
-albedo_texture = ExtResource("3_xvgsr")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_oqwcg"]
 _surfaces = [{
@@ -198,7 +195,6 @@ shadow_mesh = SubResource("ArrayMesh_tsavu")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvgsr"]
 shading_mode = 0
-albedo_texture = ExtResource("3_5t4e2")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_a6664"]
 _surfaces = [{
@@ -268,6 +264,7 @@ shadow_mesh = SubResource("ArrayMesh_tsavu")
 [node name="Node3D" type="Node3D" unique_id=2074803683]
 
 [node name="Water" type="MeshInstance3D" parent="." unique_id=1534329151]
+visible = false
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_xvgsr")
 
@@ -281,7 +278,6 @@ shape = SubResource("BoxShape3D_ou6e5")
 debug_color = Color(2.3407545, 0, 0.43840763, 0.8156863)
 
 [node name="miss" type="MeshInstance3D" parent="." unique_id=991844441]
-visible = false
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_oqwcg")
 
@@ -296,7 +292,6 @@ debug_color = Color(2.3407545, 0, 0.43840763, 0.8156863)
 
 [node name="hit" type="MeshInstance3D" parent="." unique_id=1952673733]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-visible = false
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_a6664")
 

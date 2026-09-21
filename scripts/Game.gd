@@ -13,6 +13,8 @@ extends Node
 @onready var targets = $World/Targets
 @onready var setup_controller = $Controllers/Setup_Controller
 @onready var input_manager = $InputManager
+@onready var highlighter_controller = $Controllers/PlayerFeedbackController/HighlighterControl
+@onready var highlight_tile = $World/Highlights/GridCellHighlight
 ##########################################################################
 
 #Declare class variables
@@ -64,9 +66,10 @@ func setup_initial_systems() -> void:
 	generator.generate_map_3d(shooting_map,game_parameters["dimx"],game_parameters["dimy"])
 	camera_controller.setup(generator,game_parameters["number_of_opponents"])
 	camera_controller.position_camera(shooting_map)
+	highlighter_controller.setup(highlight_tile)
 	
 func setup_dependant_systems() -> void:
-	interaction_controller.setup(camera_controller,target_maps)
+	interaction_controller.setup(camera_controller,target_maps, highlighter_controller)
 	game_controller.setup(game_parameters["game_mode"],enemy,target_maps)	
 	input_manager.setup(camera_controller,interaction_controller,target_maps)
 	

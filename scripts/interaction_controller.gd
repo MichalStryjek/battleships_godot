@@ -3,11 +3,13 @@ extends Node3D
 #@onready var camera_controller = $"../CameraController"
 
 var camera_controller
+var highlighter_controller
 #var target_maps : Array[GridMap]
 
-func setup(s_camera_controller,s_target_maps):
+func setup(s_camera_controller,s_target_maps,s_highlighter_controller):
 	camera_controller=s_camera_controller
 	#target_maps=s_target_maps
+	highlighter_controller = s_highlighter_controller
 	return
 
 
@@ -66,8 +68,8 @@ func handle_click_interaction(click_position):
 
 
 func get_grid_coordinates(raycast_colision):
-	
-	var grid_local_position = raycast_colision.collider.local_to_map(raycast_colision.collider.to_local(raycast_colision.position)) 	
+	var board_collided : GridMap = raycast_colision.collider
+	var grid_local_position = board_collided.local_to_map(board_collided.to_local(raycast_colision.position)) 	
 	
 	return grid_local_position
 
@@ -83,5 +85,16 @@ func interact_with_grid(grid_result):
 	return
 
 func handle_hover(cursor_position):
-	print("you moved")
+	var result = raycast_from_camera(cursor_position)
+	var object
+	if result.is_empty():
+		return
+	
+	object = result.collider
+	
+	if object is GridMap:
+		var cell = get_grid_coordinates(result)
+		logg.log20("Hover over gridmap")
+		highlighter_controller.highlight_gridmap(object, cell)
+		
 	return

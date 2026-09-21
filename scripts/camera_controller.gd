@@ -141,9 +141,6 @@ func move_maps(maps, direction, duration : float = 0.3):
 		return
 	
 	
-	if tween_map:
-		tween_map.kill()
-	
 	# if we look at the leftmost board we don't shift the boards to the right anymore
 	# as there is nothing on the left anymore
 	if direction == "right":
@@ -164,6 +161,9 @@ func move_maps(maps, direction, duration : float = 0.3):
 			# this modifies in which direction we will change array indexes
 			direction = -1
 		
+	if tween_map:
+		tween_map.kill()
+	
 	tween_map = create_tween()
 	tween_map.set_parallel(true)
 	tween_map.set_trans(Tween.TRANS_SINE)	
