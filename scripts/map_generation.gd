@@ -54,7 +54,7 @@ func create_target_boards(opponents_no,target_maps):
 		#Append to the array of target maps for future reference
 		
 		target_maps.append(board)
-		
+		board.add_to_group("opponent_maps")
 	#It has to work on duplicate because in Godot the array changes even
 	#Though it is a parameter of a function
 	board_arrangements=board_positions.duplicate()
