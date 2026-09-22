@@ -4,12 +4,15 @@ extends Node3D
 
 var camera_controller
 var highlighter_controller
+var target_maps
+var old_object
+var old_cell
 #var target_maps : Array[GridMap]
 var camera : Camera3D
 func setup(s_camera_controller,s_target_maps,s_highlighter_controller):
 	camera_controller=s_camera_controller
 	camera = camera_controller.get_camera()
-	#target_maps=s_target_maps
+	target_maps=s_target_maps
 	highlighter_controller = s_highlighter_controller
 	return
 
@@ -92,13 +95,17 @@ func interact_with_grid(grid_result):
 	var grid_coordinates = get_grid_coordinates(grid_result)	
 	logg.log40(grid.name, "Confirming name")
 	logg.log20(get_grid_coordinates(grid_result), "Detected coordinates")	
-	
-	return
+	var coords=get_grid_coordinates(grid_result)
+	var a = randf()
+	if a > 0.5:
+		a=1
+	else:
+		a=2
+	grid.set_cell_item(coords,a,0)
+	return 
 
 func handle_hover(cursor_position):
 	var result = raycast_from_camera(cursor_position,1)
-	var old_object
-	var old_cell
 	var object
 	var cell
 	if result.is_empty():

@@ -20,6 +20,8 @@ func _ready() -> void:
 	
 		pass # Replace with function body.
 
+func start():
+	pass
 
 
 func interact_with_cell(cell: Vector3i):

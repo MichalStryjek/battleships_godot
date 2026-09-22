@@ -1,6 +1,9 @@
 extends Node3D
 
-var highlight_tile
+@onready var highlight_tile: MeshInstance3D = $"../../../World/Highlights/GridCellHighlight"
+
+func get_highlight_tile():
+	return highlight_tile
 
 func setup(s_highlight_tile):
 	highlight_tile=s_highlight_tile

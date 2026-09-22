@@ -1,7 +1,7 @@
 class_name map_generator
 extends Node3D
 
-const TARGET_BOARD_SCENE = preload("res://scenes/target_board.tscn")
+const TARGET_BOARD_SCENE = preload("res://scenes/target_map.tscn")
 
 var targets
 
@@ -31,7 +31,7 @@ func generate_map_3d(grid: GridMap,x,y):
 #Dynamically create target boards as well as their remote nodes during game run
 #So it creates targets but it also returns a value of target boards array 
 #for main script to hold
-func create_target_boards(opponents_no,target_maps):
+func create_target_maps(opponents_no,target_maps):
 	#Array that decides positions of the boards
 	
 	for i in range(opponents_no):

@@ -143,7 +143,7 @@ func move_maps(maps, direction, duration : float = 0.3):
 	
 	# if we look at the leftmost board we don't shift the boards to the right anymore
 	# as there is nothing on the left anymore
-	if direction == "right":
+	if direction == "left":
 		if map_focus_selection==0:
 			return
 		else:

@@ -2,14 +2,18 @@
 
 [ext_resource type="Script" uid="uid://c08iyqbcx4sxc" path="res://scripts/Game.gd" id="1_p57ef"]
 [ext_resource type="Script" uid="uid://cfqlfl1nu2417" path="res://scripts/input_manager.gd" id="2_0tnpc"]
-[ext_resource type="Script" uid="uid://c5ryrq0li58xh" path="res://scripts/game_controller.gd" id="2_gee14"]
+[ext_resource type="Script" uid="uid://c5ryrq0li58xh" path="res://scripts/Controllers/game_controller.gd" id="2_gee14"]
 [ext_resource type="MeshLibrary" uid="uid://ddvvd75rievrv" path="res://assets/mesh_libraries/grid_tiles_placeholder.tres" id="2_lnu2h"]
+[ext_resource type="Script" uid="uid://c0skekbdr85u7" path="res://scripts/Controllers/board_controller.gd" id="3_dinhu"]
 [ext_resource type="MeshLibrary" uid="uid://b7f15w1li1n1q" path="res://assets/mesh_libraries/wall.tres" id="3_iywne"]
-[ext_resource type="Script" uid="uid://phrhkspdfv12" path="res://scripts/highlighter_control.gd" id="3_vtaks"]
+[ext_resource type="Script" uid="uid://phrhkspdfv12" path="res://scripts/Controllers/highlighter_controler.gd" id="3_vtaks"]
 [ext_resource type="MeshLibrary" uid="uid://oqf4u5q35oy5" path="res://assets/mesh_libraries/desk.tres" id="4_lbhrr"]
-[ext_resource type="Script" uid="uid://cn68fogokwg64" path="res://scripts/setup_controller.gd" id="5_0tnpc"]
-[ext_resource type="Script" uid="uid://cmgklwxco0wkg" path="res://scripts/camera_controller.gd" id="6_p57ef"]
-[ext_resource type="Script" uid="uid://b3a63axv3ei05" path="res://scripts/interaction_controller.gd" id="6_u5sy4"]
+[ext_resource type="Script" uid="uid://cn68fogokwg64" path="res://scripts/Controllers/setup_controller.gd" id="5_0tnpc"]
+[ext_resource type="Script" uid="uid://cmgklwxco0wkg" path="res://scripts/Controllers/camera_controller.gd" id="6_p57ef"]
+[ext_resource type="Script" uid="uid://b3a63axv3ei05" path="res://scripts/Controllers/interaction_controller.gd" id="6_u5sy4"]
+[ext_resource type="Script" uid="uid://b3vs1m881d8dy" path="res://scripts/Controllers/player_controller.gd" id="9_kvuet"]
+[ext_resource type="Script" uid="uid://bqylqphr2tnp4" path="res://scripts/opponents.gd" id="10_trtic"]
+[ext_resource type="Script" uid="uid://emegnahgq007" path="res://scripts/display_manager.gd" id="11_kvpfn"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vtaks"]
 
@@ -25,6 +29,9 @@ script = ExtResource("1_p57ef")
 script = ExtResource("2_0tnpc")
 
 [node name="Controllers" type="Node" parent="." unique_id=822748397]
+
+[node name="BoardController" type="Node" parent="Controllers" unique_id=465274269]
+script = ExtResource("3_dinhu")
 
 [node name="PlayerFeedbackController" type="Node" parent="Controllers" unique_id=930039078]
 
@@ -44,8 +51,14 @@ script = ExtResource("6_p57ef")
 transform = Transform3D(7.54979e-08, 0.9854349, -0.17005315, 0, 0.17005315, 0.9854349, 1, -7.4398265e-08, 1.2838656e-08, -0.0056638718, 10.32209, -5)
 fov = 107.00347
 
-[node name="Setup_Controller" type="Node" parent="Controllers" unique_id=2030465671]
+[node name="SetupController" type="Node" parent="Controllers" unique_id=2030465671]
 script = ExtResource("5_0tnpc")
+
+[node name="PlayerController" type="Node" parent="Controllers" unique_id=2052852596]
+script = ExtResource("9_kvuet")
+
+[node name="Opponents" type="Node" parent="Controllers" unique_id=890387282]
+script = ExtResource("10_trtic")
 
 [node name="World" type="Node3D" parent="." unique_id=1058022076]
 
@@ -80,3 +93,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="DisplayManager" type="Node" parent="." unique_id=1214971044]
+script = ExtResource("11_kvpfn")
