@@ -5,9 +5,8 @@ var enemy
 var secret_board
 var target_maps
 
-func setup(setup_game_mode, setup_enemy, setup_target_maps):
+func setup(setup_game_mode, setup_target_maps):
 	game_mode=setup_game_mode
-	enemy=setup_enemy
 	target_maps=setup_target_maps
 	return
 

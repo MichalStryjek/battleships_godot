@@ -3,18 +3,17 @@ extends Node3D
 
 const TARGET_BOARD_SCENE = preload("res://scenes/target_map.tscn")
 
-var targets
 
-var dimx
-var dimy
+var targets
 
 var board_positions : Array[Vector3] =[]
 var board_arrangements : Array[Vector3] = [] #This contains also slots for arrays to move into whe changing view
+var setup_controller
+var map_sizes
 
-func setup(setup_targets, s_dimx,s_dimy):
-	targets=setup_targets
-	dimx = s_dimx
-	dimy = s_dimy
+func setup(s_setup_controller):
+	setup_controller=s_setup_controller
+	map_sizes=setup_controller.input_settings["map_sizes"]
 	return
 
 
@@ -31,9 +30,9 @@ func generate_map_3d(grid: GridMap,x,y):
 #Dynamically create target boards as well as their remote nodes during game run
 #So it creates targets but it also returns a value of target boards array 
 #for main script to hold
-func create_target_maps(opponents_no,target_maps):
+func generate_target_maps(target_maps,targets):
 	#Array that decides positions of the boards
-	
+	var opponents_no = setup_controller.input_settings["number_of_opponents"]
 	for i in range(opponents_no):
 		#Read and initiate scene containing opponent board
 		var board = TARGET_BOARD_SCENE.instantiate()
@@ -50,7 +49,9 @@ func create_target_maps(opponents_no,target_maps):
 		board.position=board_positions[i]
 		board.rotation_degrees=Vector3i(0,0,90)
 		
-		generate_map_3d(board,dimx,dimy)
+		var map_label= "map_%d" % (i) # there will be a need to assign this size basen on id
+		var dx = map_sizes[map_label]
+		generate_map_3d(board,dx,dx)
 		#Append to the array of target maps for future reference
 		
 		target_maps.append(board)
@@ -76,3 +77,16 @@ func mirror_board_positions(pos: Array[Vector3]):
 	pos.append_array(pos_backup)
 	#print("APPENDED ",pos)
 	return pos
+
+func create_maps(player_map,target_maps,targets):
+	var id = 1 # get_player_id()
+	generate_player_map(player_map,id)
+	generate_target_maps(target_maps,targets)
+
+func generate_player_map(player_map, id):
+	var map_label = str("map_",id)
+	var map_dim_x=map_sizes[map_label]
+	var map_dim_y = map_dim_x
+	generate_map_3d(player_map,map_dim_x,map_dim_y)
+
+	

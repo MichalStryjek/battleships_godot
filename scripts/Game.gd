@@ -25,20 +25,14 @@ extends Node
 #Call functions from map_generation helper class called "map_generator".
 #It could be a node as well
 var generator = map_generator.new()
-var enemy = opponent.new() #Artificial opponent variables and class initiaiton
+#var enemy = opponent.new() #Artificial opponent variables and class initiaiton
 ################################
 
 #Game options
 
 var target_maps : Array[GridMap]=[]
-var game_parameters :Dictionary = {
+var match_parameters :Dictionary = {}
 
-"number_of_opponents" : 1,
-"dimx" : 1,
-"dimy" : 1,
-"game_mode" : "Unassigned"
-
-}
 ################################
 
 #logging tool
@@ -57,8 +51,8 @@ func _ready() -> void:
 	logg.assign_log_level(30)  # for debuging
 	logg.log_source = "GAM_MAIN"
 	##########################################
-	
-	setup_controller.assign_settings_to_the_game(game_parameters)
+	setup_controller.provide_match_settings()
+	setup_controller.assign_settings_to_the_game(match_parameters)
 	setup_game_window()
 	setup_initial_systems()
 	setup_dependant_systems()
@@ -70,16 +64,16 @@ func _ready() -> void:
 	begin_game()
 
 func setup_initial_systems() -> void:
-	generator.setup(targets,game_parameters["dimx"],game_parameters["dimy"])
-	generator.create_target_maps(game_parameters["number_of_opponents"],target_maps) #Targetmaps gets here its value
-	generator.generate_map_3d(player_map,game_parameters["dimx"],game_parameters["dimy"])
-	camera_controller.setup(generator,game_parameters["number_of_opponents"])
+	generator.setup(setup_controller)
+	generator.create_maps(player_map,target_maps,targets)
+	#generator.create_target_maps(target_maps) #Targetmaps gets here its value
+	camera_controller.setup(generator,match_parameters["number_of_opponents"])
 	camera_controller.position_camera(player_map)
 	
 func setup_dependant_systems() -> void:
 	interaction_controller.setup(camera_controller,target_maps, highlighter_controller)
 	input_manager.setup(camera_controller,interaction_controller,target_maps)
-	game_controller.setup(game_parameters["game_mode"],enemy,target_maps)	
+	game_controller.setup(match_parameters["game_mode"],target_maps)	
 	board_controller.setup(player_controller)
 	
 	
@@ -88,7 +82,7 @@ func setup_game_window():
 	pass
 
 func initiate_players():
-	player_controller.initiate_players(game_parameters["number_of_opponents"])
+	player_controller.initiate_players(match_parameters["number_of_opponents"])
 	pass
 
 func initiate_game_boards():
