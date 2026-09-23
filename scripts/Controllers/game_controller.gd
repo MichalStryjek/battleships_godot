@@ -30,7 +30,7 @@ func setup_ships():
 func indicate_ready():
 	pass
 
-func interact_with_cell(cell: Vector3i):
+func click_on_grid(grid, cell: Vector3i):
 	#print(cell)
 	#var target_maps : Array = []
 	#var item_id = target_maps[0].get_cell_item(cell)

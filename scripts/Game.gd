@@ -116,7 +116,7 @@ func setup_generator_systems() -> void:
 
 func setup_dependant_systems() -> void:
 	camera_controller.setup(generator,opponents_number)
-	interaction_controller.setup(camera_controller, highlighter_controller)
+	interaction_controller.setup(camera_controller, highlighter_controller,game_controller)
 	input_manager.setup(camera_controller,interaction_controller,target_maps)
 	game_controller.setup()	
 	

@@ -7,10 +7,12 @@ var highlighter_controller
 var old_object
 var old_cell
 var camera : Camera3D
-func setup(s_camera_controller,s_highlighter_controller):
+var game_controller
+func setup(s_camera_controller,s_highlighter_controller,s_game_controller):
 	camera_controller=s_camera_controller
 	camera = camera_controller.get_camera()
 	highlighter_controller = s_highlighter_controller
+	game_controller=s_game_controller
 	return
 
 
@@ -92,18 +94,8 @@ func interact_with_grid(grid_result):
 	var grid_coordinates = get_grid_coordinates(grid_result)	
 	logg.log40(grid.name, "Confirming name")
 	logg.log20(get_grid_coordinates(grid_result), "Detected coordinates")	
-	var coords=get_grid_coordinates(grid_result)
 	
-	##############################
-	#ATTENTION
-	#THIS IS PLACEHOLDER FOR INTERACTION
-	var a = randf()
-	if a > 0.5:
-		a=1
-	else:
-		a=2
-	grid.set_cell_item(coords,a,0)
-	####################################
+	game_controller.click_on_grid(grid, grid_coordinates)
 	return 
 
 func handle_hover(cursor_position):
