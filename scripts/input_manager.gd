@@ -15,11 +15,11 @@ func _input(event):
 		camera_controller.switch_pan()
 		
 	if event.is_action_pressed("switch_map_left"):
-		camera_controller.move_maps(target_maps, "left")
+		camera_controller.move_maps("left")
 		
 		
 	if event.is_action_pressed("switch_map_right"):
-		camera_controller.move_maps(target_maps, "right")
+		camera_controller.move_maps("right")
 	
 func _unhandled_input(event):
 	if event is InputEventMouseButton:

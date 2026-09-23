@@ -11,6 +11,7 @@ func initiate_players(number_of_opponents):
 		player=Player.new()
 		player.player_id=i
 		player.state=player.PlayerState.ALIVE
+		player.is_human=Player.IsHuman.NO
 		players[player.player_id]=player
 		
 func get_player(player_id: int) -> Player:

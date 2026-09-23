@@ -14,10 +14,12 @@ var camera_at_a : bool = true
 var generator
 var map_focus_selection : int = 0
 var number_of_players
+var maps
 
 func setup(s_generator, s_number_of_players):
 	generator = s_generator
 	number_of_players = s_number_of_players
+	maps = generator.target_maps
 	return
 
 var log1 = logger_tool.new()
@@ -110,7 +112,7 @@ func find_camera_position(map : GridMap, _cam : Camera3D=camera):
 #number of players and which map is currently viewed
 #it is independant on camera movement up and down
 #and it shift gridmaps around instead
-func move_maps(maps, direction, duration : float = 0.3):
+func move_maps(direction, duration : float = 0.3):
 	
 	#This value is just a number of players. There might be some issues in 
 	#the future so it is a separate variable in this function just in case
