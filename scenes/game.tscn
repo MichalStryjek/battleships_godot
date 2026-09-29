@@ -88,6 +88,8 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 mesh = SubResource("PlaneMesh_vtaks")
 surface_material_override/0 = SubResource("StandardMaterial3D_gkcsb")
 
+[node name="Ships" type="Node3D" parent="World" unique_id=105073701]
+
 [node name="UI" type="Control" parent="." unique_id=1662731694]
 layout_mode = 3
 anchors_preset = 0

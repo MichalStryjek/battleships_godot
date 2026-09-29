@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bcjlyln3bob00"]
+
+[ext_resource type="ArrayMesh" uid="uid://ds87tvksmk3g7" path="res://assets/blender_objects/ship_2.obj" id="1_h2n8t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bedht"]
+size = Vector3(3, 1, 1)
+
+[node name="battleship" type="Node3D" unique_id=521558327]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=489470571]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0011698008, 0.019041538, 0)
+mesh = ExtResource("1_h2n8t")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=637114536]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1033797311]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
+shape = SubResource("BoxShape3D_bedht")
+debug_color = Color(0.1882353, 0.5137255, 1, 0.88235295)

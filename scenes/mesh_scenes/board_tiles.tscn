@@ -264,20 +264,18 @@ shadow_mesh = SubResource("ArrayMesh_tsavu")
 [node name="Node3D" type="Node3D" unique_id=2074803683]
 
 [node name="Water" type="MeshInstance3D" parent="." unique_id=1534329151]
-visible = false
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_xvgsr")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Water" unique_id=945729454]
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Water/StaticBody3D" unique_id=2020967114]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.017664433, 0)
-visible = false
 shape = SubResource("BoxShape3D_ou6e5")
-debug_color = Color(2.3407545, 0, 0.43840763, 0.8156863)
+debug_color = Color(2.3409142, 0, 0.43504807, 1)
 
 [node name="miss" type="MeshInstance3D" parent="." unique_id=991844441]
+visible = false
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_oqwcg")
 
@@ -288,10 +286,11 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.017664433, 0)
 visible = false
 shape = SubResource("BoxShape3D_ou6e5")
-debug_color = Color(2.3407545, 0, 0.43840763, 0.8156863)
+debug_color = Color(2.3409142, 0, 0.43504807, 1)
 
 [node name="hit" type="MeshInstance3D" parent="." unique_id=1952673733]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+visible = false
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_a6664")
 
@@ -302,4 +301,4 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.017664433, 0)
 visible = false
 shape = SubResource("BoxShape3D_ou6e5")
-debug_color = Color(2.3407545, 0, 0.43840763, 0.8156863)
+debug_color = Color(2.3409142, 0, 0.43504807, 1)
