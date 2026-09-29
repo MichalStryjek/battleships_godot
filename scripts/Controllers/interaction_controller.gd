@@ -95,7 +95,7 @@ func interact_with_grid(grid_result):
 	logg.log40(grid.name, "Confirming name")
 	logg.log20(get_grid_coordinates(grid_result), "Detected coordinates")	
 	
-	game_controller.click_on_grid(grid, grid_coordinates)
+	#game_controller.click_on_grid(grid, grid_coordinates)
 	return 
 
 func handle_hover(cursor_position):

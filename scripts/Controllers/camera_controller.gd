@@ -96,8 +96,8 @@ func find_camera_position(map : GridMap, _cam : Camera3D=camera):
 	_map_min_y = map_min[0]
 	map_max_y = map_max[0]
 	
-	camera_pos_x = map_max_x
-	camera_pos_y = map_max_y-1
+	camera_pos_x = map_max_x+5
+	camera_pos_y = map_max_y-5
 	camera_pos_z = (map_max_x+map_max_y)*0.60
 	
 	calculated_position=Vector3(camera_pos_y,camera_pos_z,camera_pos_x)

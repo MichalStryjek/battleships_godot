@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://b3vs1m881d8dy" path="res://scripts/Controllers/player_controller.gd" id="9_kvuet"]
 [ext_resource type="Script" uid="uid://bqylqphr2tnp4" path="res://scripts/opponents.gd" id="10_trtic"]
 [ext_resource type="Script" uid="uid://emegnahgq007" path="res://scripts/display_manager.gd" id="11_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://dyovtegki2ylo" path="res://assets/textures/temp_panel_background.jpeg" id="14_ir15t"]
+[ext_resource type="Texture2D" uid="uid://btss3s4jyif" path="res://assets/textures/images/ships/vecteezy_pirate-ship-and-galleon-in-sea-battle_13455514_573/ship_2.png" id="15_ca42v"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vtaks"]
 
@@ -21,6 +23,10 @@
 transparency = 1
 shading_mode = 0
 albedo_color = Color(0.78431374, 0.7764706, 0, 0.5803922)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_trtic"]
+texture = ExtResource("14_ir15t")
+modulate_color = Color(0.9105091, 0.5446344, 0.17270318, 1)
 
 [node name="Game" type="Node" unique_id=1301129256]
 script = ExtResource("1_p57ef")
@@ -40,6 +46,10 @@ script = ExtResource("3_vtaks")
 
 [node name="GameController" type="Node" parent="Controllers" unique_id=340299629]
 script = ExtResource("2_gee14")
+
+[node name="Placement" type="Node" parent="Controllers/GameController" unique_id=1297789595]
+
+[node name="Game" type="Node" parent="Controllers/GameController" unique_id=1026496193]
 
 [node name="InteractionController" type="Node3D" parent="Controllers" unique_id=1454032089]
 script = ExtResource("6_u5sy4")
@@ -90,11 +100,40 @@ surface_material_override/0 = SubResource("StandardMaterial3D_gkcsb")
 
 [node name="Ships" type="Node3D" parent="World" unique_id=105073701]
 
-[node name="UI" type="Control" parent="." unique_id=1662731694]
+[node name="UI" type="CanvasLayer" parent="." unique_id=762531734]
+
+[node name="SetupShipUI" type="Control" parent="UI" unique_id=801184958]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/SetupShipUI" unique_id=9393575]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="ShipsSelectPanel" type="Panel" parent="UI/SetupShipUI/MarginContainer" unique_id=849837014]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_trtic")
+
+[node name="TextureRect" type="TextureRect" parent="UI/SetupShipUI/MarginContainer/ShipsSelectPanel" unique_id=255046751]
+layout_mode = 0
+offset_right = 251.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_ca42v")
+expand_mode = 1
+stretch_mode = 2
 
 [node name="DisplayManager" type="Node" parent="." unique_id=1214971044]
 script = ExtResource("11_kvpfn")

@@ -3,6 +3,7 @@ extends Node
 var enemy
 var secret_board
 
+var current_stage
 enum GamePhase
 
 
@@ -26,23 +27,15 @@ func start():
 	pass
 
 func setup_ships():
-	pass
-func indicate_ready():
+	current_stage=GamePhase.PLACEMENT
 	pass
 
-func click_on_grid(grid, cell: Vector3i):
-	#print(cell)
-	#var target_maps : Array = []
-	#var item_id = target_maps[0].get_cell_item(cell)
-	#print(item_id)
-	#if item_id == GridMap.INVALID_CELL_ITEM:
-	#	return
-	#print("AAAAA",cell)
-	#compare_cell(cell,enemy.secred_board)
-	pass 
+func begin_shooting():
+	current_stage=GamePhase.GAME
 	
-func compare_cell(cell,grid):
-	var i = cell[0]
-	var j = cell[2]
-	var result=grid[i][j]
-	return result
+func end_game():
+	current_stage=GamePhase.FINISH
+
+
+func indicate_ready():
+	pass
