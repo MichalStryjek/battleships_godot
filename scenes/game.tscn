@@ -28,6 +28,8 @@ albedo_color = Color(0.78431374, 0.7764706, 0, 0.5803922)
 texture = ExtResource("14_ir15t")
 modulate_color = Color(0.9105091, 0.5446344, 0.17270318, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ca42v"]
+
 [node name="Game" type="Node" unique_id=1301129256]
 script = ExtResource("1_p57ef")
 
@@ -117,23 +119,56 @@ anchors_preset = -1
 anchor_left = 0.75
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -5.0
-grow_horizontal = 0
-grow_vertical = 0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ShipsSelectPanel" type="Panel" parent="UI/SetupShipUI/MarginContainer" unique_id=849837014]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_trtic")
 
-[node name="TextureRect" type="TextureRect" parent="UI/SetupShipUI/MarginContainer/ShipsSelectPanel" unique_id=255046751]
-layout_mode = 0
-offset_right = 251.0
-offset_bottom = 720.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ShipList" type="VBoxContainer" parent="UI/SetupShipUI/MarginContainer" unique_id=863415255]
+layout_mode = 2
+alignment = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="UI/SetupShipUI/MarginContainer/ShipList" unique_id=793494018]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.81
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ca42v")
+
+[node name="TextureRect" type="TextureRect" parent="UI/SetupShipUI/MarginContainer/ShipList/PanelContainer2" unique_id=2081057172]
+propagate_maximum_size = true
+layout_mode = 2
 texture = ExtResource("15_ca42v")
 expand_mode = 1
-stretch_mode = 2
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/SetupShipUI/MarginContainer/ShipList" unique_id=1417194871]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.81
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ca42v")
+
+[node name="TextureRect" type="TextureRect" parent="UI/SetupShipUI/MarginContainer/ShipList/PanelContainer" unique_id=1056668762]
+propagate_maximum_size = true
+layout_mode = 2
+texture = ExtResource("15_ca42v")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer3" type="PanelContainer" parent="UI/SetupShipUI/MarginContainer/ShipList" unique_id=174006966]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.81
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ca42v")
+
+[node name="TextureRect" type="TextureRect" parent="UI/SetupShipUI/MarginContainer/ShipList/PanelContainer3" unique_id=639906202]
+propagate_maximum_size = true
+layout_mode = 2
+texture = ExtResource("15_ca42v")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="DisplayManager" type="Node" parent="." unique_id=1214971044]
 script = ExtResource("11_kvpfn")

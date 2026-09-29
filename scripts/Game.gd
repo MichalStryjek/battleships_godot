@@ -50,7 +50,7 @@ var logg = logger_tool.new()
 
 
 func _ready() -> void:
-	
+
 	###########################################
 	logg.assign_log_level(30)  # for debuging
 	logg.log_source = "GAM_MAIN"
