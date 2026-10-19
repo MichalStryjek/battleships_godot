@@ -4,8 +4,7 @@ extends Node3D
 
 var camera_controller
 var highlighter_controller
-var old_object
-var old_cell
+
 var camera : Camera3D
 var game_controller
 func setup(s_camera_controller,s_highlighter_controller,s_game_controller):
@@ -101,9 +100,12 @@ func interact_with_grid(grid_result):
 func handle_hover(cursor_position):
 	var result = raycast_from_camera(cursor_position,1)
 	var object
+	var old_object
+	var old_cell
 	var cell
 	if result.is_empty():
 		highlighter_controller.hide_hover()
+		old_object = null
 		return
 	object = result.collider
 	
