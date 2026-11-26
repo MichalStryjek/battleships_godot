@@ -17,7 +17,7 @@ extends Node
 @onready var display_manager = $DisplayManager
 @onready var board_controller = $Controllers/BoardController
 @onready var player_controller = $Controllers/PlayerController
-
+@onready var ship_setup_UI = $UI/SetupShipUI
 ##########################################################################
 
 #Declare class variables
@@ -116,9 +116,9 @@ func setup_generator_systems() -> void:
 
 func setup_dependant_systems() -> void:
 	camera_controller.setup(generator,opponents_number)
-	interaction_controller.setup(camera_controller, highlighter_controller,game_controller)
+	interaction_controller.setup(camera_controller, highlighter_controller,game_controller,ship_setup_UI)
 	input_manager.setup(camera_controller,interaction_controller,target_maps)
-	game_controller.setup()	
+	game_controller.setup(ship_setup_UI)	
 	
 func setup_game_window():
 	display_manager.set_window_size()

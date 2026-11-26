@@ -4,14 +4,15 @@ extends Node3D
 
 var camera_controller
 var highlighter_controller
-
+var ship_placement_UI
 var camera : Camera3D
 var game_controller
-func setup(s_camera_controller,s_highlighter_controller,s_game_controller):
+func setup(s_camera_controller,s_highlighter_controller,s_game_controller,s_ship_UI):
 	camera_controller=s_camera_controller
 	camera = camera_controller.get_camera()
 	highlighter_controller = s_highlighter_controller
 	game_controller=s_game_controller
+	ship_placement_UI=s_ship_UI
 	return
 
 
@@ -57,18 +58,16 @@ func raycast_from_camera(mouse_pos: Vector2, collision_mask=4294967295):
 	
 	return result
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func handle_click_interaction(click_position):	
 	
 	var result = raycast_from_camera(click_position,1)
 	
 	logg.log_source="INT_HAND"
-	
+
 	if result.is_empty():
 		return
 	
 	var object = result.collider
-	
 	if object.has_method("interact"):
 		object.intereact()
 	
@@ -101,7 +100,7 @@ func handle_hover(cursor_position):
 	var result = raycast_from_camera(cursor_position,1)
 	var object
 	var old_object
-	var old_cell
+	var old_cell = null
 	var cell
 	if result.is_empty():
 		highlighter_controller.hide_hover()
@@ -119,3 +118,6 @@ func handle_hover(cursor_position):
 			old_cell=cell
 			highlighter_controller.highlight_gridmap(object, cell)
 	return
+	
+func drag_ship():
+	pass
